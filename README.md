@@ -22,9 +22,12 @@ Read/write splitting can help improve the performance of applications that have 
 
 GORM also supports read/write splitting, which is a technique used to divide database operations into read and write operations and direct them to different database servers.
 
-1. In GORM, read/write splitting is achieved by using a plugin called gorm.io/plugin/dbresolver which supports different types of database replication schemes like Master-Slave, Master-Master, and Sharding.
-2. The dbresolver plugin can be configured to route read operations to read-only database replicas while directing write operations to the primary write database.
-3. GORM's read/write splitting feature can help improve the scalability and performance of applications by distributing database operations across multiple servers and reducing the load on the primary write database.
+1. GORM's read/write splitting works by configuring multiple database connections, with some connections designated for read operations and others designated for write operations.
+2. When an application needs to perform a database operation, GORM selects the appropriate connection based on the type of operation.
+3. Read operations are distributed across the read connections, while write operations are sent to the write connection(s).
+4. GORM's read/write splitting also includes features like load balancing, which distributes read operations across multiple read connections to help evenly distribute the workload.
+
+> Note that read/write splitting may not always be appropriate for every application, as it can add complexity and may not provide a significant performance boost for applications with low read/write ratios.
 
 # How to run
 
