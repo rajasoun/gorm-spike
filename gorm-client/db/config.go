@@ -14,6 +14,6 @@ func LoadConfig(dbConfigFile string) map[string]string {
 		log.Fatalf("Failed to read configuration file: %v", err)
 	}
 
-	dbConfig := viper.GetStringMapString("db")
+	dbConfig := viper.GetStringMapString("mysql_writer")
 	return dbConfig
 }
