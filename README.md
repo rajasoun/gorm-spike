@@ -15,6 +15,7 @@ In GORM, connection pooling works by maintaining a pool of database connections 
 3. The size of the connection pool is configurable in GORM, and it can be set to a specific number of connections or allowed to grow dynamically as needed. 
 4. When a connection is returned to the pool, it is checked to make sure that it is still valid and usable. If a connection is found to be invalid or has been idle for too long, it is discarded and replaced with a new connection.
 5. GORM's connection pooling also includes features like connection timeouts, which allow connections to be closed after a certain period of inactivity, and connection reaping, which periodically checks connections in the pool to make sure they are still valid and removes any that are not.
+6. GORM provides built-in support for connection pooling, allowing you to configure the maximum number of idle connections and the maximum number of open connections. By default, GORM uses a connection pool with a maximum of 10 idle connections and a maximum of 100 open connections.
 
 ## GORM Read/Write Splitting
 
@@ -41,6 +42,14 @@ GORM also supports read/write splitting, which is a technique used to divide dat
 2. Run the test
     ```bash
     cd gorm-client
-    go test -count=1  -v -run TestCreateUsersWithConnectionPool  github.com/rajasoun/gorm-client/test
-    go test -count=1  -v -run TestCreateUsersWithoutConnectionPool  github.com/rajasoun/gorm-client/test
+    go test -count=1  -v -run ^TestCreateUsersWithDefaultConnectionPool$ github.com/rajasoun/gorm-client/test
+    go test -count=1  -v -run ^TestCreateUsersWithConnectionPoolConfigured$ github.com/rajasoun/gorm-client/test
     ```
+
+## Problem 
+
+* Do we need to explicityly set Connection parameter Configuration
+    * Microservice (Library - GORM )
+    * DB ()
+
+-----

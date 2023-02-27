@@ -87,7 +87,7 @@ func TestCreateUser(t *testing.T) {
 	}
 }
 
-func TestCreateUsersWithoutConnectionPool(t *testing.T) {
+func TestCreateUsersWithDefaultConnectionPool(t *testing.T) {
 	repo, err := load.NewUserRepository()
 	if err != nil {
 		t.Fatal("Failed to create user repository", err)
@@ -112,7 +112,7 @@ func TestCreateUsersWithoutConnectionPool(t *testing.T) {
 	t.Logf("Total number of users: %d", totalUsers)
 }
 
-func TestCreateUsersWithConnectionPool(t *testing.T) {
+func TestCreateUsersWithConnectionPoolConfigured(t *testing.T) {
 	repo, err := load.NewUserRepositoryWithConnectionPool()
 	if err != nil {
 		t.Fatal("Failed to create user repository", err)
