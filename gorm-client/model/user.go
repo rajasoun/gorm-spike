@@ -3,7 +3,7 @@ package model
 import (
 	"gorm.io/gorm"
 
-	"github.com/rajasoun/gorm-client/db"
+	"github.com/rajasoun/gorm-client/db/v0"
 )
 
 type User struct {

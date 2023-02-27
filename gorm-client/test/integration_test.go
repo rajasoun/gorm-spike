@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/rajasoun/gorm-client/db"
+	"github.com/rajasoun/gorm-client/db/v0"
 	"github.com/rajasoun/gorm-client/test/load"
 )
 

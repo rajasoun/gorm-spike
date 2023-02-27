@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/rajasoun/gorm-client/db"
+	"github.com/rajasoun/gorm-client/db/v0"
 	"github.com/rajasoun/gorm-client/log"
 )
 
