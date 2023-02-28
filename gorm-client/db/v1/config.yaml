@@ -7,3 +7,16 @@ database:
   max_idle_conns: 5
   max_open_conns: 20
   conn_max_lifetime: 10
+
+gorm:
+  skipDefaultTransaction: false
+  fullSaveAssociations: false
+  dryRun: false
+  prepareStmt: false
+  disableAutomaticPing: false
+  disableForeignKeyConstraintWhenMigrating: false
+  ignoreRelationshipsWhenMigrating: false
+  disableNestedTransaction: false
+  allowGlobalUpdate: false
+  queryFields: false
+  createBatchSize: 0
