@@ -10,7 +10,6 @@ func TestLoadConfig(t *testing.T) {
 	t.Run("load config", func(t *testing.T) {
 		config, err := LoadDBConfig()
 		assert.NoError(t, err)
-
 		assert.Equal(t, "localhost", config.Host)
 		assert.Equal(t, 3306, config.Port)
 		assert.Equal(t, "dbuser", config.User)
