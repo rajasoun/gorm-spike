@@ -7,12 +7,14 @@ require (
 	github.com/rs/zerolog v1.29.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.15.0
+	github.com/stretchr/testify v1.8.1
 	gorm.io/driver/mysql v1.4.6
 	gorm.io/gorm v1.24.5
 )
 
 require (
 	github.com/corpix/uarand v0.0.0-20170723150923-031be390f409 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
@@ -23,6 +25,7 @@ require (
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/spf13/afero v1.9.3 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
