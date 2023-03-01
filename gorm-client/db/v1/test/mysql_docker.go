@@ -1,14 +1,31 @@
 package test
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
 	"time"
 
+	"github.com/docker/docker/client"
 	dockertest "github.com/ory/dockertest/v3"
 	"github.com/ory/dockertest/v3/docker"
 )
+
+func checkDockerIsRunning() error {
+	cli, err := client.NewClientWithOpts(client.FromEnv)
+	if err != nil {
+		log.Fatalf("Could not connect to docker: %s", err)
+		return err
+	}
+	_, err = cli.Ping(context.Background())
+	if err != nil {
+		log.Println("Docker is not running")
+		return err
+	}
+	log.Println("Docker is running")
+	return nil
+}
 
 func startMySqlContainer(pool *dockertest.Pool, exposedPort string) (*dockertest.Resource, error) {
 	var passwordEnv = "MYSQL_ROOT_PASSWORD=dbpassword"
@@ -99,6 +116,10 @@ func waitForContainerToStart(pool *dockertest.Pool, exposedPort string) {
 
 // InitTestDocker function initialize docker with postgres image used for integration tests
 func InitTestDocker(exposedPort string) (*dockertest.Pool, *dockertest.Resource) {
+	err := checkDockerIsRunning()
+	if err != nil {
+		log.Fatalf("Docker is not running: %s", err)
+	}
 	pool := newDockerPool()
 	resource := startContainer(pool, exposedPort)
 	setExpiration(resource)
