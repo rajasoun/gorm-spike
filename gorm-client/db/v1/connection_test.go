@@ -23,19 +23,3 @@ func TestNewDBWithDockerTest(t *testing.T) {
 	assert.NoError(t, err, "Failed to connect to database")
 	assert.NotNil(t, dbConn, "Database connection is nil")
 }
-
-func TestNewDBWithInMemoryDB(t *testing.T) {
-	pool, resource := test.InitTestDocker("3306")
-	// stop container after test
-	defer func() {
-		if err := pool.Purge(resource); err != nil {
-			log.Println("Failed to purge resource")
-		}
-		log.Println("Purged resource")
-	}()
-
-	dbConn, err := NewDB()
-
-	assert.NoError(t, err, "Failed to connect to database")
-	assert.NotNil(t, dbConn, "Database connection is nil")
-}
